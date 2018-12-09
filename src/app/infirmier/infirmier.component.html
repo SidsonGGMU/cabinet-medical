@@ -1,0 +1,40 @@
+<h1>Liste des infirmiers et de leurs patients</h1>
+<table class="heavyTable">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Prénom</th>
+    <th>Adresse</th>
+    <th>Patients</th>
+    <th>Désaffecter un patient</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let inf of infirmiers">
+    <td>{{ inf.nom }}</td>
+    <td>{{ inf['prénom'] }}</td>
+    <td>{{ inf.adresse.rue }} {{ inf.adresse['numéro'] }} {{ inf.adresse['étage'] }} ,{{ inf.adresse.ville }} {{ inf.adresse.codePostal}}</td>
+    <td>
+      <mat-form-field>
+        <mat-select  placeholder="Liste patient(s)"  name="willAffectId">
+          <mat-option *ngFor="let patient of inf.patients">{{ patient.nom }} {{ patient['prénom'] }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+
+    <td>
+      <mat-form-field>
+        <mat-select placeholder="Désaffecter un patient"  [(ngModel)]="willAffectId" name="willAffectId">
+          <mat-option  (click)="affChanged($event)" *ngFor="let patient of inf.patients" value="{{ patient['numéroSécuritéSociale'] }}">{{ patient.nom }} {{ patient['prénom'] }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+  </tr>
+
+  <tr *ngIf="!infirmiers || infirmiers.length == 0">
+    <td colspan="6" > Il n'y a aucun infirmier actuellement</td>
+  </tr>
+
+
+  </tbody>
+</table>

@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+body {
+margin: 0;
+font-family: 'Roboto', sans-serif;
+}
+
+mat-card {
+max-width: 80%;
+margin: 2em auto;
+text-align: center;
+}
+
+mat-toolbar-row {
+justify-content: space-between;
+}
+
+a {
+color: black;
+font-size: 12px;
+text-decoration: none;
+text-align: center;
+padding: 14px 10px;
+}
+
+a:hover {
+cursor: pointer;
+}
+
+a.active {
+    background-color: rgb(199, 33, 111);
+    color: white;
+}
